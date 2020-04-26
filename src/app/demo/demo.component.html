@@ -12,5 +12,28 @@
 <input type="text" [(ngModel)]="str">
 
 <input type="text" [value]="str">
-
 <h1>{{str}}</h1>
+
+
+<input type="number" [(ngModel)]="no1">
+<input type="number" [(ngModel)]="no2">
+<button (click)="onAddClick()"> Add </button>
+<h1>{{ans}}</h1>
+
+<hr>
+<input #input1 (keyup)="0">
+<h1>value from template binding {{input1.value}}</h1>
+<hr>
+<h1>Demo for ViewChild</h1>
+<input type="text" value="jinalshah" #txtdemo>
+<hr>
+<input type="number" #txtno1>
+<input type="number" #txtno2>
+<button (click)="onAdd1Click(txtno1.value,txtno2.value)"> Add </button>
+<h1>{{ans1}}</h1>
+<div>
+  <h1 #jinal>dfsaasfd</h1>
+  <h1 #jinal>d</h1>
+  <h1 #jinal>df</h1>
+  <h1 #jinal>fd</h1>
+</div>
