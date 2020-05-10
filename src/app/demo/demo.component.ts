@@ -16,7 +16,7 @@ import {
   //styles:[]
 })
 export class DemoComponent implements OnInit, AfterViewInit {
-  @ViewChild("txtdemo") txtdemo: ElementRef;
+  @ViewChild("txtdemo") txtdemo: ElementRef<HTMLInputElement>;
   @ViewChildren("jinal") htarr: QueryList<ElementRef>;
   no: number = 10;
   flag: boolean = true;
