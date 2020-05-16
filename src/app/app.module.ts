@@ -8,9 +8,11 @@ import { HighliterDirective } from './highliter.directive';
 import { CreditcartDirective } from './creditcart.directive';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { SidebarComponent } from './productlist/sidebar/sidebar.component';
+import { FilterPipe } from './filter.pipe';
+import { AddproductComponent } from './productlist/addproduct/addproduct.component';
 
 @NgModule({
-  declarations: [AppComponent, DemoComponent, TodosComponent, HighliterDirective, CreditcartDirective, ProductlistComponent, SidebarComponent],
+  declarations: [AppComponent, DemoComponent, TodosComponent, HighliterDirective, CreditcartDirective, ProductlistComponent, SidebarComponent, FilterPipe, AddproductComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,15 +7,17 @@
 
     <h1>{{dt |date:'dd/MM/yy' }}</h1>
     <h1>Products</h1>
+    <input #inputsearch (keyup)="0">
     <div class="row">
-      <div *ngFor="let item of productsArr" class="col-sm-6 col-md-4">
+      <!-- -->
+      <div *ngFor="let item of productsArr  | filter:inputsearch.value  " class="col-sm-6 col-md-4">
         <div class="thumbnail">
           <img height="250" src="{{item.pro_img}}" alt="...">
           <div class="caption">
             <h3>{{item.pro_name | titlecase }}</h3>
             <p>{{item.pro_price | currency:'CAD':'symbol-narrow'  }}</p>
-            <p><a class="btn btn-primary" role="button">{{item.pro_qty | number:'2.3-4' }}</a> <a
-                class="btn btn-default" role="button">Button</a></p>
+            <p><a class="btn btn-primary" role="button">{{item.pro_qty | number:'2.3-4' }}</a>
+              <a class="btn btn-default" (click)="onDeleteProduct(item)" role="button">Delete</a></p>
           </div>
         </div>
       </div>

@@ -48,4 +48,7 @@ export class ProductlistComponent implements OnInit {
   onSearchClick(value: string) {
     this.productsArr = this.productsArr.filter((x) => x.pro_name == value);
   }
+  onDeleteProduct(item) {
+    this.productsArr.splice(this.productsArr.indexOf(item), 1);
+  }
 }
