@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Todo } from "./todo";
+import { TododataService } from "./tododata.service";
 @Component({
   selector: "app-todos",
   templateUrl: "./todos.component.html",
@@ -10,21 +11,43 @@ export class TodosComponent implements OnInit {
   Title: string;
   Status: string = "pending";
   StatusArr: string[] = ["done", "pending"];
-  todoarr: Todo[] = [
-    new Todo("1", "EMail to your manager", "done"),
-    new Todo("2", "push your code to github", "pending"),
-    new Todo("3", "go for running", "pending"),
-  ];
+  todoarr: Todo[] = [];
   flag: boolean = false;
 
-  constructor() {}
+  constructor(private _tododata: TododataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._tododata.getAllTodos().subscribe(
+      (data) => {
+        this.todoarr = data;
+        console.log(data);
+      },
+      function (error) {
+        console.log(error);
+      },
+      function () {
+        console.log("patyu");
+      }
+    );
+  }
   onButtonClick() {
     this.flag = !this.flag;
   }
   onDeleteClick(item: Todo): void {
-    this.todoarr.splice(this.todoarr.indexOf(item), 1);
+    this._tododata.deletetodo(item.Id).subscribe(
+      (data: any) => {
+        console.log(data);
+        if (data.affectedRows == 1) {
+          this.todoarr.splice(this.todoarr.indexOf(item), 1);
+        }
+      },
+      function (error) {
+        console.log(error);
+      },
+      function () {
+        console.log("delete call end");
+      }
+    );
   }
   onAddTodo(): void {
     this.todoarr.push(new Todo(this.Id, this.Title, this.Status));

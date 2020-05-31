@@ -1,0 +1,24 @@
+<h1>Template driven forms / Todo add form </h1>
+
+<div class="container">
+
+  <form (ngSubmit)="onTodoSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label> ID</label>
+      <input name="Id" ngModel #Id="ngModel" required class="form-control" type="text" placeholder="Enter Product Id">
+      <label class="alert alert-danger" *ngIf="Id.hasError('required') && !Id.pristine">Id is Required</label>
+      <!-- <label class="alert alert-danger" *ngIf="pro_id.hasError('email') && !pro_id.pristine">Email is not valid</label> -->
+    </div>
+    <div class="form-group">
+      <label>Title</label>
+      <input name="Title" ngModel class="form-control" type="text" placeholder="Enter Title">
+    </div>
+    <div class="form-group">
+      <label>Status</label>
+      <input name="Status" ngModel class="form-control" type="text" placeholder="Enter Status">
+    </div>
+
+
+    <button type="submit" [disabled]="!f.valid" class="form-control btn btn-primary">Add Product</button>
+  </form>
+</div>
